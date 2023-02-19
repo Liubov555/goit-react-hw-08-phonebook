@@ -1,34 +1,44 @@
 import styled from "@emotion/styled";
 
 export const Form = styled.form`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 10px;
+  flex-direction: row;
+  justify-content: space-between;
 `;
 
 export const Label = styled.label`
-display: flex;
-flex-direction: column;
-    font-size: 20px;
-    margin-bottom: 12px;
+  margin-right: 10px;
 `;
 
 export const Input = styled.input`
-    height: 25px;
-    width: 300px;
-    margin-top: 8px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    border: none;
-`
+  margin-left: 3px;
+  background-color: transparent;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-image: initial;
+  border-bottom: 2px solid rgb(34, 69, 145);
+  outline: none;
+  &::placeholder {
+    text-align: start;
+    color: #c24712;
+  }
+`;
+
 export const FormButton = styled.button`
-cursor: pointer;
-width: 120px;
-height: 40px;
-border-radius: 5px;
-border: none;
-background-color: lightcoral;
-color: white;
-text-transform: capitalize;
-font-weight: bold;
-`
+  border-radius: 5px;
+  border: 1px solid #f1895c;
+  transition: all 250ms ease 0s;
+  &:hover {
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    background: linear-gradient(
+      281deg,
+      rgb(23 145 128) 0%,
+      rgb(59 207 70) 100%
+    );
+    transition: all 250ms ease 0s;
+  }
+`;

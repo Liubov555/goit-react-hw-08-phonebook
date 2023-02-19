@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { nanoid } from "nanoid";
 import PropTypes from 'prop-types';
-import { addContact } from "../../redux/operations";
+import { addContact } from "../../redux/contacts/operations";
 import { useDispatch, useSelector } from "react-redux";
-import { selectContacts } from "redux/selectors";
+import { selectAllContacts } from "redux/contacts/contacts-selector";
+import { HiUserAdd } from "react-icons/hi";
 
 import { Form, Label, Input, FormButton } from "./ContactForm.styles";
 
@@ -16,7 +17,7 @@ export default function ContactForm() {
     const nameId = nanoid();
     const phoneId = nanoid();
 
-    const contacts = useSelector(selectContacts);
+    const contacts = useSelector(selectAllContacts);
     const dispatch = useDispatch();
 
     const handleChange = evt => {
@@ -38,18 +39,19 @@ export default function ContactForm() {
 
     const handleSubmit = evt => {
         evt.preventDefault();
-        const contact = {
+        const newContact = {
             name,
             phone,
             id: nanoid()
         };
 
-        const checkContact = contacts.some(contact => contact.name.toLowerCase() === name.toLowerCase()
+        const checkContact = contacts.some(contact =>
+            contact.name.toLowerCase() === name.toLowerCase()
         );
 
         checkContact ?
             alert(`${name} is already in contacts`)
-            : dispatch(addContact(contact));
+            : dispatch(addContact(newContact));
 
         resetSubmit();
     };
@@ -60,8 +62,8 @@ export default function ContactForm() {
     };
 
     return (
-        <Form action="" onSubmit={handleSubmit}>
-            <Label >
+        <Form onSubmit={handleSubmit}>
+            <Label htmlFor={nameId} >
                 Name:
                 <Input
                     id={nameId}
@@ -74,7 +76,7 @@ export default function ContactForm() {
                     required
                 />
             </Label>
-            <Label>
+            <Label htmlFor={phoneId}>
                 Number:
                 <Input
                     id={phoneId}
@@ -87,7 +89,9 @@ export default function ContactForm() {
                     required
                 />
             </Label>
-            <FormButton type="submit">Add contact</FormButton>
+            <FormButton type="submit">
+                <HiUserAdd size={15} />
+            </FormButton>
         </Form>
     );
 };

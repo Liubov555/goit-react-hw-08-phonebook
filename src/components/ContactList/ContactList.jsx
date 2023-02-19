@@ -1,38 +1,27 @@
-import PropTypes from "prop-types";
-import { List, Item, Text, Button } from "./ContactList.style";
-import { useDispatch, useSelector } from "react-redux";
-import { selectFilteredContacts } from "../../redux/selectors";
-import { deleteContact } from "redux/operations";
+import React from "react";
+import { ContactsItem } from "components/ContactsItem/ContactsItem";
+import { useSelector } from "react-redux";
+import { getContacts, getFilter } from "redux/contacts/contacts-selector";
 
-export default function ContactList() {
-    const dispatch = useDispatch();
-    const contacts = useSelector(selectFilteredContacts);
+import { List } from "./ContactList.style";
+
+export const ContactList = () => {
+    const contacts = useSelector(getContacts);
+    const filter = useSelector(getFilter);
+
+    const getFindContacts = () => {
+        const normalizedFilter = filter.toLowerCase();
+        return contacts.filter(contact =>
+            contact.name.toLowerCase().includes(normalizedFilter)
+        );
+    };
+    const getFindContact = getFindContacts();
 
     return (
         <List>
-            {contacts.map(({ id, name, phone }) => {
-                return (
-                    <Item key={id}>
-                        <Text> {name}: {phone} </Text>
-                        <Button
-                            type="button"
-                            onClick={() => dispatch(deleteContact(id))}>
-                            Delete
-                        </Button>
-                    </Item>
-                );
-            }
-            )}
+            {getFindContact.map(contact => (
+                <ContactsItem contact={contact} key={contact.id} />
+            ))}
         </List>
     );
-}
-
-ContactList.prototypes = {
-    contacts: PropTypes.arrayOf(
-        PropTypes.exact({
-            id: PropTypes.string.isRequired,
-            name: PropTypes.string.isRequired,
-            phone: PropTypes.string.isRequired,
-        })),
-    deleteContact: PropTypes.func,
-}
+};

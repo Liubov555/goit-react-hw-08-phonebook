@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchContacts, addContact, deleteContact } from "./operations";
+import { logOut } from "redux/auth/operations";
 
 
 const handlePending = state => {
@@ -14,45 +15,46 @@ const handleRejected = (state, action) => {
 const contactsSlice = createSlice({
     name: 'contacts',
     initialState: {
-        items: [],
+        contactItems: [],
         isLoading: false,
         error: null,
     },
 
     extraReducers: {
-        [fetchContacts.pending](state) {
-            state.isLoading = true;
-        },
+        [fetchContacts.pending]: handlePending,
+        [addContact.pending]: handlePending,
+        [deleteContact.pending]: handlePending,
+
+        [fetchContacts.rejected]: handleRejected,
+        [addContact.rejected]: handleRejected,
+        [deleteContact.rejected]: handleRejected,
+
         [fetchContacts.fulfilled](state, action) {
             state.isLoading = false;
             state.error = null;
-            state.items = action.payload;
-        },
-        [fetchContacts.rejected](state, action) {
-            state.isLoading = false;
-            state.error = action.payload;
+            state.contactItems = action.payload;
         },
 
-
-        [addContact.pending]: handlePending,
         [addContact.fulfilled](state, action) {
             state.isLoading = false;
             state.error = null;
-            state.items.unshift(action.payload);
+            state.contactItems.push(action.payload);
         },
-        [addContact.rejected]: handleRejected,
 
-
-        [deleteContact.pending]: handlePending,
         [deleteContact.fulfilled](state, action) {
             state.isLoading = false;
             state.error = null;
-            const index = state.items.findIndex(
+            const index = state.contactItems.findIndex(
                 contact => contact.id === action.payload.id
             );
-            state.items.splice(index, 1)
+            state.contactItems.splice(index, 1)
         },
-        [deleteContact.rejected]: handleRejected,
+
+        [logOut.fulfilled](state) {
+            state.contactItems = [];
+            state.isLoading = false;
+            state.error = null;
+        }
     }
 });
 
