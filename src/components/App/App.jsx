@@ -1,4 +1,4 @@
-import { Section } from "./App.styles";
+import { AppContainer } from "./App.styles";
 
 import { useEffect, lazy } from "react";
 import { useDispatch } from "react-redux";
@@ -28,7 +28,7 @@ export default function App() {
   return isRefreshing ? (
     <b>Refreshing user...</b>
   ) : (
-    <Section>
+    <AppContainer>
       <Routes>
         <Route path='/' element={<Layout />}>
           <Route index element={<HomePage />} />
@@ -48,7 +48,7 @@ export default function App() {
           />
 
           <Route path='/contacts' element={
-            <PrivateRoute redirectTo="/contacts"
+            <PrivateRoute redirectTo="/login"
               component={<ContactsPage />}
             />
           }
@@ -56,7 +56,7 @@ export default function App() {
 
         </Route>
       </Routes>
-    </Section >
+    </AppContainer >
   );
 };
 

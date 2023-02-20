@@ -34,6 +34,7 @@ export const Button = styled.button`
   border: none;
   font-size: 1em;
   margin: 5px ;
+  margin-top: 20px;
   background: #77b6ce;
   box-shadow: 5px 5px 10px #d1cdc7, -5px -5px 10px #ffffff;
   &:hover {
@@ -44,3 +45,9 @@ export const Button = styled.button`
     box-shadow: inset 7px 7px 38px #e37c4f, inset -7px -7px 38px #ffa076;
   }
 `;
+
+export const Text = styled.p`
+margin-top: 0;
+  font-family:'Helvetica Neue' ;
+  font-size: 12px;
+`

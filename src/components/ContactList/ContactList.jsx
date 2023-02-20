@@ -11,10 +11,12 @@ export const ContactList = () => {
 
     const getFindContacts = () => {
         const normalizedFilter = filter.toLowerCase();
+
         return contacts.filter(contact =>
             contact.name.toLowerCase().includes(normalizedFilter)
         );
     };
+
     const getFindContact = getFindContacts();
 
     return (

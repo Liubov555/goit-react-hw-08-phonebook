@@ -3,9 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { ContactList } from "components/ContactList/ContactList";
 import ContactForm from "components/ContactForm/ContactForm";
-import { FilterContacts } from "components/Filter/Filter";
+import FilterContacts from "components/Filter/Filter";
 import { fetchContacts } from "redux/contacts/operations";
 import { getIsLoading } from "redux/contacts/contacts-selector";
+
+import { Div } from './Contacts.styled';
 
 export default function Contacts() {
     const dispatch = useDispatch();
@@ -16,11 +18,11 @@ export default function Contacts() {
     }, [dispatch]);
 
     return (
-        <div>
-            <h3>Your Contacts</h3>
+        <Div>
+            <title>Your Contacts</title>
             <ContactForm />
             <FilterContacts />
             {isLoading || <ContactList />}
-        </div>
+        </Div>
     )
 }

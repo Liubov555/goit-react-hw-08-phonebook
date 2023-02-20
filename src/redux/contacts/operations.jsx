@@ -27,8 +27,8 @@ export const addContact = createAsyncThunk(
                 phone
             });
             return response.data;
-        } catch (error) {
-            return thunkAPI.rejectWithValue(error.message);
+        } catch (evt) {
+            return thunkAPI.rejectWithValue(evt.message);
         }
     }
 );
@@ -41,8 +41,8 @@ export const deleteContact = createAsyncThunk(
         try {
             const response = await axios.delete(`/contacts/${id}`);
             return response.data;
-        } catch (error) {
-            return thunkAPI.rejectWithValue(error.message);
+        } catch (evt) {
+            return thunkAPI.rejectWithValue(evt.message);
         }
     }
 );

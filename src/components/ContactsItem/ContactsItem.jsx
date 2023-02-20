@@ -1,6 +1,7 @@
 import { HiUserRemove } from 'react-icons/hi'
 import { deleteContact } from 'redux/contacts/operations';
 import { useDispatch } from 'react-redux';
+
 import { Item, Button } from './ContactsItem.styled';
 
 export const ContactsItem = ({ contact }) => {

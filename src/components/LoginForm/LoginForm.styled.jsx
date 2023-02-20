@@ -26,22 +26,21 @@ export const Input = styled.input`
 `;
 
 export const ButtonLogIn = styled.button`
-  width: 215px;
+   width: 215px;
   height: 35px;
   border-radius: 25px;
-  color: #fafafa;
+  color: white;
   border: none;
   font-size: 1em;
-  margin: 5px;
-  background: #f1895c;
+  margin: 5px ;
+  margin-top: 20px;
+  background: #77b6ce;
   box-shadow: 5px 5px 10px #d1cdc7, -5px -5px 10px #ffffff;
   &:hover {
-    background: #e37c4f;
-    transition: background-color 250ms ease-out;
+    background: #f1b83b;
   }
   &:active {
-    background: #f1895c;
+    background: #f1b83b;
     box-shadow: inset 7px 7px 38px #e37c4f, inset -7px -7px 38px #ffa076;
-    transition: background-color 250ms ease-out;
   }
 `;

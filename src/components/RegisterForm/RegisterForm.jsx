@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { register } from '../../redux/auth/operations';
-import { Input, Button } from "./RegisterForm.styled";
+import { Input, Button, Text } from "./RegisterForm.styled";
 
 export const RegisterForm = () => {
     const dispatch = useDispatch();
@@ -32,6 +32,7 @@ export const RegisterForm = () => {
             <label>
                 <Input type='password' name='password' placeholder="password" />
             </label>
+            <Text>Use uppercase / lowercase letters and numders for password </Text>
             <Button type="submit">Register</Button>
         </form>
     )

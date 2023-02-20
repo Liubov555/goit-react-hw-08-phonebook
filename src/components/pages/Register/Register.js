@@ -1,12 +1,12 @@
 import { RegisterForm } from "components/RegisterForm/RegisterForm";
-import { Registers, H3 } from "./Register.styled";
+import { Registers, H1 } from "./Register.styled";
 
 export default function Register() {
     return (
         <Registers>
-            <H3>
+            <H1>
                 Registration
-            </H3>
+            </H1>
             <RegisterForm />
         </Registers>
     );

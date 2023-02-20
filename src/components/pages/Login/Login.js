@@ -1,11 +1,12 @@
 import { LoginForm } from "components/LoginForm/LoginForm";
+import { Logins, H1, Text } from "./Login.styled";
 
 export default function Login() {
     return (
-        <div>
-            <h3>Login</h3>
-            <p>Welcome back</p>
+        <Logins>
+            <H1>Login</H1>
+            <Text>Welcome back</Text>
             <LoginForm />
-        </div>
+        </Logins>
     );
 };

@@ -4,13 +4,11 @@ import { AppBar } from "components/AppBar/AppBar";
 import { Suspense } from "react";
 import { Toaster } from "react-hot-toast";
 
-import { Section, Img } from "./Layout.styled";
+import { Section } from "./Layout.styled";
 
 export const Layout = () => {
     return (
         <Section>
-
-
             <AppBar />
             <Suspense fallback={null} >
                 <Outlet />

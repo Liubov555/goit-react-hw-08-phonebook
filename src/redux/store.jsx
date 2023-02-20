@@ -13,7 +13,6 @@ import {
     REGISTER,
 } from 'redux-persist';
 import storage from "redux-persist/lib/storage";
-import { getDefaultNormalizer } from "@testing-library/react";
 
 // Persisting token field from auth slice to localstorage
 
