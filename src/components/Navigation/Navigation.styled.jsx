@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 export const HeaderLink = styled(NavLink)`
     color: #f1b83b;
     text-decoration: none;
+    margin-right: 15px;
 
    font-weight: bold;
       &.active {

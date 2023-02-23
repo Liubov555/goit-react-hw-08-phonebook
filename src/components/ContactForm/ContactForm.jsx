@@ -12,7 +12,7 @@ import { Form, Label, Input, FormButton } from "./ContactForm.styles";
 export default function ContactForm() {
 
     const [name, setName] = useState('');
-    const [phone, setPhone] = useState('');
+    const [number, setNumber] = useState('');
 
     const nameId = nanoid();
     const phoneId = nanoid();
@@ -28,8 +28,8 @@ export default function ContactForm() {
                 setName(value);
                 break;
 
-            case 'phone':
-                setPhone(value);
+            case 'number':
+                setNumber(value);
                 break;
 
             default:
@@ -41,7 +41,7 @@ export default function ContactForm() {
         evt.preventDefault();
         const newContact = {
             name,
-            phone,
+            number,
             id: nanoid()
         };
 
@@ -58,7 +58,7 @@ export default function ContactForm() {
 
     const resetSubmit = () => {
         setName('');
-        setPhone('');
+        setNumber('');
     };
 
     return (
@@ -81,8 +81,8 @@ export default function ContactForm() {
                 <Input
                     id={phoneId}
                     type="tel"
-                    name="phone"
-                    value={phone}
+                    name="number"
+                    value={number}
                     onChange={handleChange}
                     pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
                     title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
@@ -99,6 +99,6 @@ export default function ContactForm() {
 
 ContactForm.prototypes = {
     name: PropTypes.string.isRequired,
-    phone: PropTypes.string.isRequired,
+    number: PropTypes.string.isRequired,
     onSubmit: PropTypes.func.isRequired,
 }

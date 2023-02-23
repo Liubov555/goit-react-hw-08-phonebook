@@ -10,7 +10,7 @@ export const ContactsItem = ({ contact }) => {
     const handleDelete = () => dispatch(deleteContact(contact.id));
     return (
         <Item>
-            {contact.name}: {contact.phone}
+            {contact.name}: {contact.number}
             <Button onClick={handleDelete}>
                 <HiUserRemove size={15} />
             </Button>

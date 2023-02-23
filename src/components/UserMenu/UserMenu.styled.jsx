@@ -12,15 +12,18 @@ export const Text = styled.p`
 
 export const Button = styled.button`
  text-decoration: none;
-    color: white;
-    padding: 8px 16px;
+    color: white ;
+    padding: 0px 12px;
     background-color: #77b6ce ;
     border-radius: 10px;
-cursor: pointer;
-  
-  
-  :hover {
-    color: #f1b83b;
-    background-color: #6daac4;
+    border: none;
+ cursor: pointer;
+
+ 
+  :hover,
+  :focus-visible {
+   
+background-color:  #f1b83b;
+    
   }
 `;
